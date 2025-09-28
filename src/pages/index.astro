@@ -1,0 +1,257 @@
+---
+import "../styles/global.css";
+import Rosa2 from "../assets/images/2Rosa.jpg";
+import Monedas from "../assets/images/Monedas.jpg";
+import VelaRosa from "../assets/images/VelaRosa.jpg";
+import BlancoNegro from "../assets/images/VelasBlancoNegro.jpg";
+import RominaFoto from "../assets/images/romina.jpg";
+import { Image } from "astro:assets";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="container mx-auto p-4">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a
+          href="_blank"
+          class="flex items-center space-x-3 rtl:space-x-reverse"
+        >
+          <img
+            src="https://flowbite.com/docs/images/logo.svg"
+            class="h-8"
+            alt="Flowbite Logo"
+          />
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            >Flowbite</span
+          >
+        </a>
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"></path>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                aria-current="page">Inicio</a
+              >
+            </li>
+            <li>
+              <a
+                href="#sobremi"
+                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Sobre Mi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#servicios"
+                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Servicios</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section>
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
+        <!-- Contacto -->
+        <div
+          class="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 items-center justify-center"
+        >
+          <h2 class="text-2xl font-bold text-gray-800">Contáctame</h2>
+          <div class="flex flex-col gap-1.5 text-blue-600">
+            <a href="tel:+34969302023">+34 696 302023</a>
+            <a href="mailto:test@gmail.com">test@gmail.com</a>
+            <a href="https://www.tiktok.com/@Romina" target="_blank"
+              >Tiktok @Romina</a
+            >
+            <a href="https://www.instagram.com/romina" target="_blank"
+              >Instagram @Romina</a
+            >
+          </div>
+        </div>
+
+        <!-- Imagen central -->
+        <div
+          class="bg-white rounded-2xl shadow-md p-2 col-span-1 lg:col-span-2 flex justify-center items-center"
+        >
+          <Image
+            src={RominaFoto}
+            alt="Imagen central"
+            class="w-full max-h-80 lg:max-h-96 rounded-xl object-cover"
+          />
+        </div>
+
+        <!-- Reseñas -->
+        <div
+          class="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 items-center justify-center"
+        >
+          <h2 class="text-2xl font-bold text-gray-800">Reseñas</h2>
+          <p class="text-gray-600 leading-relaxed text-sm lg:text-base">
+            Encontré a Romi de casualidad en TikTok y cuando más lo necesitaba,
+            dejé de creer en las casualidades. A raíz de su limpieza de bloqueos
+            se me han despejado las piedras del camino y sobretodo me ha dado <span
+              class="font-semibold text-gray-800">PAZ</span
+            >, y en eso es experta. La recomiendo al 300%, 100% sería poco 😊
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="sobremi"
+      class="mx-auto p-6 bg-white rounded-2xl shadow-md my-10"
+    >
+      <h1 class="text-4xl font-bold mb-6">Sobre Mi</h1>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Romina, <span class="font-semibold">Tarotista y Guía Espiritual</span> –
+        25 años de experiencia. Acompaño a personas que buscan claridad, respuestas
+        y equilibrio en su vida, guiándolas con respeto, profesionalismo y empatía.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Mi conexión con el mundo espiritual comenzó desde la infancia, a los 6
+        años, y es fruto de un legado mágico transmitido por mi abuela. Con ella
+        descubrí y desarrollé mis dones; desde su partida, continuar este camino
+        de vida es la forma de seguir unidas en energía.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Hoy pongo todo este recorrido a tu servicio a través de sesiones online
+        personalizadas de:
+      </p>
+
+      <ul
+        class="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-1"
+      >
+        <li>
+          <span class="font-semibold">Tarot:</span> orientación y claridad para tus
+          decisiones.
+        </li>
+        <li>
+          <span class="font-semibold">Trabajos energéticos:</span> armonización y
+          equilibrio de tu energía.
+        </li>
+        <li>
+          <span class="font-semibold">Rituales de Alta Magia Blanca:</span> para
+          atraer luz y protección.
+        </li>
+        <li>
+          <span class="font-semibold">Velomancia:</span> lectura y mensajes a través
+          de las velas.
+        </li>
+      </ul>
+
+      <p class="text-gray-700 leading-relaxed">
+        Te ofrezco un espacio <span class="font-semibold text-purple-600"
+          >seguro y confidencial</span
+        > para que puedas encontrar guía, luz y herramientas espirituales que te
+        ayuden a avanzar en tu camino.
+      </p>
+    </section>
+    <section
+      id="servicios"
+      class="mx-auto p-6 bg-white rounded-2xl shadow-md my-10"
+    >
+      <h1 class="text-3xl font-bold">Servicios Magicos</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+        <!-- Tarjeta -->
+        <div
+          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
+        >
+          <Image
+            class="h-64 lg:h-96 w-full object-cover"
+            alt="Rosa"
+            src={Rosa2}
+          />
+          <div class="p-4 flex flex-col gap-2">
+            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
+            <p class="text-gray-600">Ritual de amor propio</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta -->
+        <div
+          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
+        >
+          <Image
+            class="h-64 lg:h-96 w-full object-cover"
+            alt="Blanco y Negro"
+            src={BlancoNegro}
+          />
+          <div class="p-4 flex flex-col gap-2">
+            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
+            <p class="text-gray-600">Ritual de amor propio</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta -->
+        <div
+          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
+        >
+          <Image
+            class="h-64 lg:h-96 w-full object-cover"
+            alt="Monedas"
+            src={Monedas}
+          />
+          <div class="p-4 flex flex-col gap-2">
+            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
+            <p class="text-gray-600">Ritual de amor propio</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta -->
+        <div
+          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
+        >
+          <Image
+            class="h-64 lg:h-96 w-full object-cover"
+            alt="Vela Rosa"
+            src={VelaRosa}
+          />
+          <div class="p-4 flex flex-col gap-2">
+            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
+            <p class="text-gray-600">Ritual de amor propio</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
