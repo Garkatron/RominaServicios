@@ -123,8 +123,13 @@ import { Image } from "astro:assets";
         <div
           class="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 items-center justify-center"
         >
-          <h2 class="text-2xl font-bold text-gray-800">Reseñas</h2>
-          <p class="text-gray-600 leading-relaxed text-sm lg:text-base">
+          <h2 id="reseña_contador" class="text-2xl font-bold text-gray-800">
+            Reseña
+          </h2>
+          <p
+            id="reseña"
+            class="text-gray-600 leading-relaxed text-sm lg:text-base"
+          >
             Encontré a Romi de casualidad en TikTok y cuando más lo necesitaba,
             dejé de creer en las casualidades. A raíz de su limpieza de bloqueos
             se me han despejado las piedras del camino y sobretodo me ha dado <span
@@ -358,5 +363,94 @@ import { Image } from "astro:assets";
         </div>
       </div>
     </section>
+    <section
+      id="testimonios"
+      class="mx-auto p-6 bg-white rounded-2xl shadow-lg my-10 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
+    >
+      <h2
+        class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2"
+      >
+        Testimonios: A quienes he ayudado
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+          <p class="text-gray-700 leading-relaxed">
+            <strong
+              >Mikaela Andrea Zalazar - Cáncer de ovario de alto grado:</strong
+            >
+            Apenas estaba por empezar mi tratamiento, llena de dudas, miedos e incertidumbres.
+            Un día apareció Romy; sin pedirme nada, me ofreció su ayuda con sus velitas
+            y su apoyo espiritual, enviándome toda su energía para transitar mis
+            quimioterapias, miedos, pérdida de pelo y tristezas que no sabía cómo
+            superar.
+          </p>
+          <p class="text-gray-700 leading-relaxed mt-2">
+            Gracias a sus velitas, encontré un gran apoyo emocional para
+            enfrentar quimioterapias de 6 horas cada 21 días. Siempre que me
+            sentía baja o temerosa por los resultados, ella estaba ahí para
+            encender una velita acompañada de un mensaje lleno de su energía.
+            Esto me permitió transitar todo mi camino, y hoy puedo decir con
+            orgullo que estoy curada y que logré llevar bien este largo proceso
+            emocionalmente.
+          </p>
+          <p class="leading-relaxed italic text-indigo-600 mt-2">
+            Gracias, Romy, por tu trabajo increíble. Tus velitas estuvieron muy
+            presentes, y tu energía fue clave. No duden en probar sus velitas o
+            una tirada de tarot con Romy; es muy efectiva y realiza un trabajo
+            maravilloso! 💖
+          </p>
+        </div>
+        <!-- Ejemplo de testimonio adicional -->
+        <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+          <p class="text-gray-700 leading-relaxed">
+            <strong
+              >Hola Romi, eres una persona acertada y tus velas son magníficas,
+              eres una persona de mucha luz!!! Séguire consultándote.
+            </strong>
+            <p class="leading-relaxed italic text-indigo-600 mt-2">
+              Muy recomendada.💖
+            </p>
+          </p>
+        </div>
+
+        <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+          <p class="text-gray-700 leading-relaxed">
+            <strong
+              >Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con
+              tiradas del tarot como con las velas y la verdad es que es
+              increíble como acierta y como funciona todo ! Seguí sus consejos
+              de los baños y también una pasada el cambio! La recomiendo al 1000
+              x 1000 a todo el mundo porque no se van a arrepentir!
+            </strong>
+            <p class="leading-relaxed italic text-indigo-600 mt-2">
+              Gracias por llegar a mi vida!💖
+            </p>
+          </p>
+        </div>
+      </div>
+    </section>
+    <script>
+      import { nan, nullable } from "astro:schema";
+
+      const texts: string[] = [
+        "Hola Romi, eres una persona acertada y tus velas son magníficas, eres una persona de mucha luz!!! Séguire consultándote , muy recomendada",
+        "Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con tiradas del tarot como con las velas y la verdad es que es increíble como acierta y como funciona todo ! Seguí sus consejos de los baños y también una pasada el cambio! La recomiendo al 1000 x 1000 a todo el mundo porque no se van a arrepentir! Gracias por llegar a mi vida!",
+      ];
+      const p = document.getElementById("reseña");
+      const h = document.getElementById("reseña_contador");
+
+      function changeText() {
+        if (p !== null) {
+          const randomIndex = Math.floor(Math.random() * texts.length);
+          p.innerText = texts[randomIndex];
+          if (h !== null) {
+            h.innerText = `Reseña [${randomIndex + 1} de ${texts.length}]`;
+          }
+        }
+      }
+
+      changeText();
+      setInterval(changeText, 4000);
+    </script>
   </body>
 </html>
