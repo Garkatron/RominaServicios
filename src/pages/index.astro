@@ -187,68 +187,168 @@ import { Image } from "astro:assets";
       </p>
     </section>
     <section
-      id="servicios"
+      id="introservicios"
       class="mx-auto p-6 bg-white rounded-2xl shadow-md my-10"
     >
-      <h1 class="text-3xl font-bold">Servicios Magicos</h1>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-        <!-- Tarjeta -->
+      <h1 class="text-4xl font-bold mb-6">
+        Rituales Energéticos para tu Bienestar
+      </h1>
+
+      <p class="text-gray-700 leading-relaxed">
+        Nuestros rituales son prácticas conscientes y personalizadas que
+        trabajan la energía, la intención y el simbolismo para ayudarte a
+        transformar tu vida. Cada uno está diseñado para acompañarte en procesos
+        de sanación, crecimiento personal y manifestación de tus deseos.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        A través de estos rituales podrás liberar bloqueos, atraer experiencias
+        positivas y equilibrar tu interior con tu entorno. Son espacios seguros
+        para reconectar contigo mismo(a), cerrar ciclos y abrir caminos hacia
+        nuevas oportunidades.
+      </p>
+    </section>
+    <section
+      id="servicios"
+      class="mx-auto p-6 bg-white rounded-2xl shadow-md my-1"
+    >
+      <h1 class="text-3xl font-bold mb-6 text-center">Servicios Mágicos</h1>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {/* Tarjeta 1 */}
         <div
           class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
         >
-          <Image
-            class="h-64 lg:h-96 w-full object-cover"
-            alt="Rosa"
-            src={Rosa2}
-          />
+          <Image class="h-64 w-full object-cover" alt="Rosa" src={Rosa2} />
           <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
-            <p class="text-gray-600">Ritual de amor propio</p>
+            <h3 class="text-lg font-semibold text-gray-800">
+              💕 Ritual de Amor de Pareja
+            </h3>
+            <p>
+              Fortalece el vínculo y la armonía en tu relación. Este ritual está
+              diseñado para nutrir la conexión, avivar la chispa y sanar
+              bloqueos energéticos entre ambos.
+            </p>
+            <h4 class="text-xl font-semibold text-pink-600">Beneficios</h4>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>Refuerza el compromiso y la comunicación.</li>
+              <li>Armoniza la energía de la pareja.</li>
+              <li>Fomenta la comprensión y el respeto mutuo.</li>
+              <li>Reaviva la pasión y el cariño.</li>
+            </ul>
+            <p class="text-gray-600 mt-2">Ritual de amor de pareja</p>
           </div>
         </div>
 
-        <!-- Tarjeta -->
+        {/* Tarjeta 2 */}
         <div
           class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
         >
           <Image
-            class="h-64 lg:h-96 w-full object-cover"
+            class="h-64 w-full object-cover"
             alt="Blanco y Negro"
             src={BlancoNegro}
           />
           <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
-            <p class="text-gray-600">Ritual de amor propio</p>
+            <h3 class="text-lg font-semibold text-gray-800">
+              ✂️ Corte de Lazos Energéticos
+            </h3>
+            <p>
+              Libérate de energías y vínculos que ya no te benefician. El corte
+              de lazos es una técnica energética que ayuda a soltar conexiones
+              emocionales, patrones repetitivos o relaciones que drenan tu
+              energía.
+            </p>
+            <h4 class="text-xl font-semibold text-indigo-600">Beneficios</h4>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>Recuperar tu energía personal y tu paz interior.</li>
+              <li>Sanar heridas emocionales del pasado.</li>
+              <li>Sentirte más liviano(a) y enfocado(a) en tu presente.</li>
+              <li>Abrir espacio para nuevas experiencias positivas.</li>
+            </ul>
+            <p class="text-gray-600 mt-2">Corte de Lazos</p>
           </div>
         </div>
 
-        <!-- Tarjeta -->
+        {/* Tarjeta 3 */}
+        <div
+          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
+        >
+          <Image class="h-64 w-full object-cover" alt="Monedas" src={Monedas} />
+          <div class="p-4 flex flex-col gap-2">
+            <h3 class="text-lg font-semibold text-gray-800">
+              💰 Ritual de Prosperidad
+            </h3>
+            <p>
+              Abre tus caminos a la prosperidad y nuevas oportunidades. Este
+              ritual te ayuda a alinearte con la energía de la abundancia,
+              atrayendo prosperidad en todas las áreas de tu vida.
+            </p>
+            <h4 class="text-xl font-semibold text-green-600">Beneficios</h4>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>Desbloquea creencias limitantes sobre el dinero.</li>
+              <li>Atrae nuevas oportunidades laborales y económicas.</li>
+              <li>Potencia tu energía creativa y productiva.</li>
+              <li>Te ayuda a vivir con mayor seguridad y confianza.</li>
+            </ul>
+            <p class="text-gray-600 mt-2">Ritual de prosperidad</p>
+          </div>
+        </div>
+
+        {/* Tarjeta 4 */}
         <div
           class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
         >
           <Image
-            class="h-64 lg:h-96 w-full object-cover"
-            alt="Monedas"
-            src={Monedas}
+            class="h-64 w-full object-cover"
+            alt="Noche con luna"
+            src={VelaRosa}
           />
           <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
-            <p class="text-gray-600">Ritual de amor propio</p>
+            <h3 class="text-lg font-semibold text-gray-800">
+              🌑 Ritual de Alejamiento
+            </h3>
+            <p>
+              Suavemente libera lo que ya no necesitas en tu vida. Este ritual
+              facilita soltar energías, personas o situaciones que ya no te
+              aportan bienestar.
+            </p>
+            <h4 class="text-xl font-semibold text-red-600">Beneficios</h4>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>Te ayuda a cerrar ciclos y sanar.</li>
+              <li>Libera vínculos negativos o tóxicos.</li>
+              <li>Te brinda paz y claridad emocional.</li>
+              <li>Abre espacio para lo nuevo y positivo.</li>
+            </ul>
+            <p class="text-gray-600 mt-2">Ritual de alejamiento</p>
           </div>
         </div>
 
-        <!-- Tarjeta -->
+        {/* Tarjeta 5 */}
         <div
           class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
         >
           <Image
-            class="h-64 lg:h-96 w-full object-cover"
+            class="h-64 w-full object-cover"
             alt="Vela Rosa"
             src={VelaRosa}
           />
           <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">Test</h3>
-            <p class="text-gray-600">Ritual de amor propio</p>
+            <h3 class="text-lg font-semibold text-gray-800">
+              🌸 Ritual de Amor Propio
+            </h3>
+            <p>
+              Reconéctate contigo mismo(a) y potencia tu autoestima. Este ritual
+              te ayuda a sanar heridas internas, fortalecer tu seguridad y abrir
+              tu corazón al amor sano.
+            </p>
+            <h4 class="text-xl font-semibold text-rose-600">Beneficios</h4>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>Aumenta tu autoestima y autoconfianza.</li>
+              <li>Libera emociones negativas hacia ti mismo(a).</li>
+              <li>Te ayuda a poner límites sanos y cuidarte mejor.</li>
+              <li>Te prepara para atraer relaciones más sanas y armoniosas.</li>
+            </ul>
+            <p class="text-gray-600 mt-2">Ritual de amor propio</p>
           </div>
         </div>
       </div>
