@@ -4,9 +4,13 @@ import Rosa2 from "../assets/images/2Rosa.jpg";
 import Monedas from "../assets/images/Monedas.jpg";
 import VelaRosa from "../assets/images/VelaRosa.jpg";
 import BlancoNegro from "../assets/images/VelasBlancoNegro.jpg";
-import RominaFoto from "../assets/images/romina.jpg";
+import RominaFoto from "../assets/images/romina2.jpg";
 import Tijeras from "../assets/images/tijeras.jpg";
+import Tarot from "../assets/images/tarot.webp";
+import Tarot2 from "../assets/images/tarot2.jpg";
 import { Image } from "astro:assets";
+import Card from "../components/Card.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <html lang="en">
@@ -15,79 +19,10 @@ import { Image } from "astro:assets";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>MagicaEnVelas</title>
   </head>
   <body class="container mx-auto p-4">
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-      <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-      >
-        <a
-          href="_blank"
-          class="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="h-8"
-            alt="Flowbite Logo"
-          />
-          <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-            >Flowbite</span
-          >
-        </a>
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"></path>
-          </svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <a
-                href="#"
-                class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page">Inicio</a
-              >
-            </li>
-            <li>
-              <a
-                href="#sobremi"
-                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Sobre Mi</a
-              >
-            </li>
-            <li>
-              <a
-                href="#servicios"
-                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Servicios</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar />
 
     <section>
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
@@ -124,7 +59,7 @@ import { Image } from "astro:assets";
           class="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 items-center justify-center"
         >
           <h2 id="reseña_contador" class="text-2xl font-bold text-gray-800">
-            Reseña
+            Reseñas
           </h2>
           <p
             id="reseña"
@@ -136,6 +71,7 @@ import { Image } from "astro:assets";
               class="font-semibold text-gray-800">PAZ</span
             >, y en eso es experta. La recomiendo al 300%, 100% sería poco 😊
           </p>
+          <a href="#testimonios">Más</a>
         </div>
       </div>
     </section>
@@ -192,6 +128,7 @@ import { Image } from "astro:assets";
         ayuden a avanzar en tu camino.
       </p>
     </section>
+    <!-- ! CONTENIDO -->
     <section
       id="introservicios"
       class="mx-auto p-6 bg-white rounded-2xl shadow-md my-10"
@@ -201,10 +138,10 @@ import { Image } from "astro:assets";
       </h1>
 
       <p class="text-gray-700 leading-relaxed">
-        Nuestros rituales son prácticas conscientes y personalizadas que
-        trabajan la energía, la intención y el simbolismo para ayudarte a
-        transformar tu vida. Cada uno está diseñado para acompañarte en procesos
-        de sanación, crecimiento personal y manifestación de tus deseos.
+        Mis rituales son prácticas conscientes y personalizadas que trabajan la
+        energía, la intención y el simbolismo para ayudarte a transformar tu
+        vida. Cada uno está diseñado para acompañarte en procesos de sanación,
+        crecimiento personal y manifestación de tus deseos.
       </p>
       <p class="text-gray-700 leading-relaxed">
         A través de estos rituales podrás liberar bloqueos, atraer experiencias
@@ -213,244 +150,238 @@ import { Image } from "astro:assets";
         nuevas oportunidades.
       </p>
     </section>
+    <!-- ! SERVICIOS -->
     <section
       id="servicios"
       class="mx-auto p-6 bg-white rounded-2xl shadow-md my-1"
     >
       <h1 class="text-3xl font-bold mb-6 text-center">Servicios Mágicos</h1>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {/* Tarjeta 1 */}
-        <div
-          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          <Image class="h-9/12 w-full object-cover" alt="Rosa" src={Rosa2} />
-          <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">
-              💕 Ritual de Amor de Pareja
-            </h3>
-            <p>
-              Fortalece el vínculo y la armonía en tu relación. Este ritual está
-              diseñado para nutrir la conexión, avivar la chispa y sanar
-              bloqueos energéticos entre ambos.
-            </p>
-            <h4 class="text-xl font-semibold text-pink-600">Beneficios</h4>
-            <ul class="list-disc list-inside text-gray-700">
-              <li>Refuerza el compromiso y la comunicación.</li>
-              <li>Armoniza la energía de la pareja.</li>
-              <li>Fomenta la comprensión y el respeto mutuo.</li>
-              <li>Reaviva la pasión y el cariño.</li>
-            </ul>
-            <p class="text-gray-600 mt-2">Ritual de amor de pareja</p>
-          </div>
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Ritual de Amor de Pareja -->
+        <Card
+          photo={Rosa2}
+          title="💕 Ritual de Amor de Pareja"
+          duration="1 mes"
+          hasPdf={true}
+          description="Fortalece la conexión y armonía en tu relación. Este ritual está diseñado para nutrir el vínculo amoroso, sanar bloqueos y reavivar la energía entre ambos."
+          benefits={[
+            "Refuerza la comunicación y el entendimiento mutuo.",
+            "Equilibra la energía emocional de la pareja.",
+            "Reaviva la pasión y el cariño desde un amor consciente.",
+            "Favorece la sanación de heridas pasadas.",
+          ]}
+          price={88}
+        />
 
-        {/* Tarjeta 2 */}
-        <div
-          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          <Image
-            class="h-9/12 w-full object-cover"
-            alt="Blanco y Negro"
-            src={BlancoNegro}
-          />
-          <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">
-              ✂️ Corte de Lazos Energéticos
-            </h3>
-            <p>
-              Libérate de energías y vínculos que ya no te benefician. El corte
-              de lazos es una técnica energética que ayuda a soltar conexiones
-              emocionales, patrones repetitivos o relaciones que drenan tu
-              energía.
-            </p>
-            <h4 class="text-xl font-semibold text-indigo-600">Beneficios</h4>
-            <ul class="list-disc list-inside text-gray-700">
-              <li>Recuperar tu energía personal y tu paz interior.</li>
-              <li>Sanar heridas emocionales del pasado.</li>
-              <li>Sentirte más liviano(a) y enfocado(a) en tu presente.</li>
-              <li>Abrir espacio para nuevas experiencias positivas.</li>
-            </ul>
-            <p class="text-gray-600 mt-2">Corte de Lazos</p>
-          </div>
-        </div>
+        <!-- Corte de Lazos Energéticos -->
+        <Card
+          photo={BlancoNegro}
+          title="✂️ Corte de Lazos Energéticos"
+          duration="1 mes"
+          hasPdf={true}
+          description="Libérate de vínculos y energías que te atan al pasado. Este proceso energético te ayuda a soltar relaciones o situaciones que drenan tu energía y recuperar tu libertad emocional."
+          benefits={[
+            "Rompe conexiones energéticas dañinas.",
+            "Devuelve tu energía personal y tu paz interior.",
+            "Ayuda a cerrar ciclos y sanar desde la raíz.",
+            "Abre espacio para lo nuevo y positivo.",
+          ]}
+          price={88}
+        />
 
-        {/* Tarjeta 3 */}
-        <div
-          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          <Image
-            class="h-9/12 w-full object-cover"
-            alt="Monedas"
-            src={Monedas}
-          />
-          <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">
-              💰 Ritual de Prosperidad
-            </h3>
-            <p>
-              Abre tus caminos a la prosperidad y nuevas oportunidades. Este
-              ritual te ayuda a alinearte con la energía de la abundancia,
-              atrayendo prosperidad en todas las áreas de tu vida.
-            </p>
-            <h4 class="text-xl font-semibold text-green-600">Beneficios</h4>
-            <ul class="list-disc list-inside text-gray-700">
-              <li>Desbloquea creencias limitantes sobre el dinero.</li>
-              <li>Atrae nuevas oportunidades laborales y económicas.</li>
-              <li>Potencia tu energía creativa y productiva.</li>
-              <li>Te ayuda a vivir con mayor seguridad y confianza.</li>
-            </ul>
-            <p class="text-gray-600 mt-2">Ritual de prosperidad</p>
-          </div>
-        </div>
+        <!-- Ritual de Prosperidad -->
+        <Card
+          photo={Monedas}
+          title="💰 Ritual de Prosperidad"
+          duration="1 mes"
+          hasPdf={true}
+          description="Alinea tu energía con la frecuencia de la prosperidad. Este ritual te ayuda a liberar bloqueos económicos y abrirte al flujo de la abundancia con claridad y confianza."
+          benefits={[
+            "Activa tu flujo energético de prosperidad.",
+            "Libera creencias limitantes sobre el dinero.",
+            "Potencia la creatividad y la acción inspirada.",
+            "Atrae oportunidades y estabilidad económica.",
+          ]}
+          price={88}
+        />
 
-        {/* Tarjeta 4 */}
-        <div
-          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          <Image
-            class="h-9/12 w-full object-cover"
-            alt="Noche con luna"
-            src={VelaRosa}
-          />
-          <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">
-              🌑 Ritual de Alejamiento
-            </h3>
-            <p>
-              Suavemente libera lo que ya no necesitas en tu vida. Este ritual
-              facilita soltar energías, personas o situaciones que ya no te
-              aportan bienestar.
-            </p>
-            <h4 class="text-xl font-semibold text-red-600">Beneficios</h4>
-            <ul class="list-disc list-inside text-gray-700">
-              <li>Te ayuda a cerrar ciclos y sanar.</li>
-              <li>Libera vínculos negativos o tóxicos.</li>
-              <li>Te brinda paz y claridad emocional.</li>
-              <li>Abre espacio para lo nuevo y positivo.</li>
-            </ul>
-            <p class="text-gray-600 mt-2">Ritual de alejamiento</p>
-          </div>
-        </div>
+        <!-- Ritual de Alejamiento Energético -->
+        <Card
+          photo={VelaRosa}
+          title="🌑 Ritual de Alejamiento Energético"
+          duration="1 mes"
+          hasPdf={true}
+          description="Suelta con amor lo que ya no vibra contigo. Este ritual te ayuda a liberar energías densas, cortar lazos negativos y recuperar tu equilibrio interior."
+          benefits={[
+            "Facilita el cierre de ciclos y la liberación emocional.",
+            "Protege tu energía personal.",
+            "Promueve la claridad y el bienestar interior.",
+            "Abre espacio para nuevas experiencias positivas.",
+          ]}
+          price={88}
+        />
 
-        {/* Tarjeta 5 */}
-        <div
-          class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          <Image
-            class="h-9/12 w-full object-cover"
-            alt="Vela Rosa"
-            src={Tijeras}
-          />
-          <div class="p-4 flex flex-col gap-2">
-            <h3 class="text-lg font-semibold text-gray-800">
-              🌸 Ritual de Amor Propio
-            </h3>
-            <p>
-              Reconéctate contigo mismo(a) y potencia tu autoestima. Este ritual
-              te ayuda a sanar heridas internas, fortalecer tu seguridad y abrir
-              tu corazón al amor sano.
-            </p>
-            <h4 class="text-xl font-semibold text-rose-600">Beneficios</h4>
-            <ul class="list-disc list-inside text-gray-700">
-              <li>Aumenta tu autoestima y autoconfianza.</li>
-              <li>Libera emociones negativas hacia ti mismo(a).</li>
-              <li>Te ayuda a poner límites sanos y cuidarte mejor.</li>
-              <li>Te prepara para atraer relaciones más sanas y armoniosas.</li>
-            </ul>
-            <p class="text-gray-600 mt-2">Ritual de amor propio</p>
-          </div>
-        </div>
+        <!-- Ritual de Amor Propio -->
+        <Card
+          photo={Tijeras}
+          title="🌸 Ritual de Amor Propio"
+          duration="1 mes"
+          hasPdf={true}
+          description="Reconecta con tu esencia y fortalece tu amor interior. Este ritual te acompaña a sanar emociones, elevar tu vibración y empoderarte desde el autocuidado y la conciencia."
+          benefits={[
+            "Aumenta tu autoestima y amor hacia ti mismo(a).",
+            "Libera bloqueos emocionales y viejas heridas.",
+            "Te ayuda a poner límites sanos y amorosos.",
+            "Conecta con tu energía auténtica y tu valor interior.",
+          ]}
+          price={88}
+        />
       </div>
     </section>
-    <section
-      id="testimonios"
-      class="mx-auto p-6 bg-white rounded-2xl shadow-lg my-10 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
-    >
-      <h2
-        class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2"
-      >
-        Testimonios: A quienes he ayudado
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-          <p class="text-gray-700 leading-relaxed">
-            <strong
-              >Mikaela Andrea Zalazar - Cáncer de ovario de alto grado:</strong
-            >
-            Apenas estaba por empezar mi tratamiento, llena de dudas, miedos e incertidumbres.
-            Un día apareció Romy; sin pedirme nada, me ofreció su ayuda con sus velitas
-            y su apoyo espiritual, enviándome toda su energía para transitar mis
-            quimioterapias, miedos, pérdida de pelo y tristezas que no sabía cómo
-            superar.
-          </p>
-          <p class="text-gray-700 leading-relaxed mt-2">
-            Gracias a sus velitas, encontré un gran apoyo emocional para
-            enfrentar quimioterapias de 6 horas cada 21 días. Siempre que me
-            sentía baja o temerosa por los resultados, ella estaba ahí para
-            encender una velita acompañada de un mensaje lleno de su energía.
-            Esto me permitió transitar todo mi camino, y hoy puedo decir con
-            orgullo que estoy curada y que logré llevar bien este largo proceso
-            emocionalmente.
-          </p>
-          <p class="leading-relaxed italic text-indigo-600 mt-2">
-            Gracias, Romy, por tu trabajo increíble. Tus velitas estuvieron muy
-            presentes, y tu energía fue clave. No duden en probar sus velitas o
-            una tirada de tarot con Romy; es muy efectiva y realiza un trabajo
-            maravilloso! 💖
-          </p>
-        </div>
-        <!-- Ejemplo de testimonio adicional -->
-        <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-          <p class="text-gray-700 leading-relaxed">
-            <strong
-              >Hola Romi, eres una persona acertada y tus velas son magníficas,
-              eres una persona de mucha luz!!! Séguire consultándote.
-            </strong>
-            <p class="leading-relaxed italic text-indigo-600 mt-2">
-              Muy recomendada.💖
-            </p>
-          </p>
-        </div>
+    <section id="tarot" class="mx-auto p-6 bg-white rounded-2xl shadow-md my-1">
+      <h1 class="text-3xl font-bold mb-6 text-center">Tarot</h1>
 
-        <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-          <p class="text-gray-700 leading-relaxed">
-            <strong
-              >Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con
-              tiradas del tarot como con las velas y la verdad es que es
-              increíble como acierta y como funciona todo ! Seguí sus consejos
-              de los baños y también una pasada el cambio! La recomiendo al 1000
-              x 1000 a todo el mundo porque no se van a arrepentir!
-            </strong>
-            <p class="leading-relaxed italic text-indigo-600 mt-2">
-              Gracias por llegar a mi vida!💖
-            </p>
-          </p>
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Lectura rápida -->
+        <Card
+          photo={Tarot}
+          title="🔮 Lectura Rápida"
+          duration="1 sesión"
+          hasPdf={false}
+          benefits={[
+            "1 pregunta o enfoque específico.",
+            "Respuesta puntual o guía inmediata.",
+          ]}
+          price={15}
+        />
+
+        <!-- Lectura completa -->
+        <Card
+          photo={Tarot}
+          title="🌙 Lectura Completa"
+          duration="1 sesión"
+          hasPdf={false}
+          benefits={[
+            "Lectura general o por área (amor, propósito, energía, bloqueos).",
+            "Incluye interpretación completa y consejo canalizado.",
+          ]}
+          price={33}
+        />
+
+        <!-- Lectura + Ritual Energético -->
+        <Card
+          photo={Tarot}
+          title="🔥 Lectura + Ritual Energético"
+          duration="1 sesión"
+          hasPdf={false}
+          benefits={[
+            "Lectura profunda y canalizada.",
+            "Ritual personalizado para desbloquear, sanar o manifestar.",
+          ]}
+          price={68}
+        />
       </div>
     </section>
-    <script>
-      import { nan, nullable } from "astro:schema";
-
-      const texts: string[] = [
-        "Hola Romi, eres una persona acertada y tus velas son magníficas, eres una persona de mucha luz!!! Séguire consultándote , muy recomendada",
-        "Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con tiradas del tarot como con las velas y la verdad es que es increíble como acierta y como funciona todo ! Seguí sus consejos de los baños y también una pasada el cambio! La recomiendo al 1000 x 1000 a todo el mundo porque no se van a arrepentir! Gracias por llegar a mi vida!",
-      ];
-      const p = document.getElementById("reseña");
-      const h = document.getElementById("reseña_contador");
-
-      function changeText() {
-        if (p !== null) {
-          const randomIndex = Math.floor(Math.random() * texts.length);
-          p.innerText = texts[randomIndex];
-          if (h !== null) {
-            h.innerText = `Reseña [${randomIndex + 1} de ${texts.length}]`;
-          }
-        }
-      }
-
-      changeText();
-      setInterval(changeText, 4000);
-    </script>
   </body>
+
+  <!-- ! TESTIMONIOS -->
+
+  <section
+    id="testimonios"
+    class="mx-auto p-6 bg-white rounded-2xl shadow-lg my-10 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
+  >
+    <h2
+      class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2"
+    >
+      Testimonios: A quienes he ayudado
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+        <p class="text-gray-700 leading-relaxed">
+          <strong
+            >Mikaela Andrea Zalazar - Cáncer de ovario de alto grado:</strong
+          >
+          Apenas estaba por empezar mi tratamiento, llena de dudas, miedos e incertidumbres.
+          Un día apareció Romy; sin pedirme nada, me ofreció su ayuda con sus velitas
+          y su apoyo espiritual, enviándome toda su energía para transitar mis quimioterapias,
+          miedos, pérdida de pelo y tristezas que no sabía cómo superar.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-2">
+          Gracias a sus velitas, encontré un gran apoyo emocional para enfrentar
+          quimioterapias de 6 horas cada 21 días. Siempre que me sentía baja o
+          temerosa por los resultados, ella estaba ahí para encender una velita
+          acompañada de un mensaje lleno de su energía. Esto me permitió
+          transitar todo mi camino, y hoy puedo decir con orgullo que estoy
+          curada y que logré llevar bien este largo proceso emocionalmente.
+        </p>
+        <p class="leading-relaxed italic text-indigo-600 mt-2">
+          Gracias, Romy, por tu trabajo increíble. Tus velitas estuvieron muy
+          presentes, y tu energía fue clave. No duden en probar sus velitas o
+          una tirada de tarot con Romy; es muy efectiva y realiza un trabajo
+          maravilloso! 💖
+        </p>
+      </div>
+      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+        <p class="text-gray-700 leading-relaxed">
+          <strong
+            >Hola Romi, eres una persona acertada y tus velas son magníficas,
+            eres una persona de mucha luz!!! Séguire consultándote.
+          </strong>
+          <p class="leading-relaxed italic text-indigo-600 mt-2">
+            Muy recomendada.💖
+          </p>
+        </p>
+      </div>
+
+      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+        <p class="text-gray-700 leading-relaxed">
+          <strong
+            >Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con
+            tiradas del tarot como con las velas y la verdad es que es increíble
+            como acierta y como funciona todo ! Seguí sus consejos de los baños
+            y también una pasada el cambio! La recomiendo al 1000 x 1000 a todo
+            el mundo porque no se van a arrepentir!
+          </strong>
+          <p class="leading-relaxed italic text-indigo-600 mt-2">
+            Gracias por llegar a mi vida!💖
+          </p>
+        </p>
+      </div>
+
+      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+        <p class="text-gray-700 leading-relaxed">
+          <strong
+            >Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con
+            tiradas del tarot como con las velas y la verdad es que es increíble
+            como acierta y como funciona todo ! Seguí sus consejos de los baños
+            y también una pasada el cambio! La recomiendo al 1000 x 1000 a todo
+            el mundo porque no se van a arrepentir!
+          </strong>
+          <p class="leading-relaxed italic text-indigo-600 mt-2">
+            Gracias por llegar a mi vida!💖
+          </p>
+        </p>
+      </div>
+
+      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
+        <p class="text-gray-700 leading-relaxed">
+          <strong>
+            Perdí al amor de mi vida el 21 de julio de 2025. Una madrugada de
+            agosto, cuando estallaba en llantos, recibí un mensaje de Romina. Yo
+            no soy de contestar mensajes, pero sentía que mi Rocío me decía que
+            le contesté, y así lo hice. Tras leer los mensajes de Romina, sentí
+            que Rocío me decía esas cosas… textuales palabras que solo sé yo que
+            podría decir Rocío. Romina me trajo a Rocío una madrugada en la que
+            estaba muy triste, sin rumbo. Desde ese momento y con palabras que
+            leí de Romina, que sentí que eran de Rocío, empecé a hacer UN DÍA A
+            LA VEZ. Gracias Romina. Gracias Rocío, amor de mi vida.
+          </strong>
+          <p class="leading-relaxed italic text-indigo-600 mt-2">
+            Jorge y Rocío
+          </p>
+        </p>
+      </div>
+    </div>
+  </section>
 </html>

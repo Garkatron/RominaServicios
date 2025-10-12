@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+
+interface CardProps {
+  photo: ImageMetadata;
+  duration?: string;
+  hasPdf?: boolean;
+  description?: string;
+  benefits?: string[];
+  price: number;
+  title: string;
+}
+
+const {
+  title,
+  photo,
+  duration = "1 mes",
+  hasPdf = false,
+  description = "",
+  benefits = [],
+  price,
+}: CardProps = Astro.props as CardProps;
+---
+
+<div
+  class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform flex flex-col"
+>
+  <Image
+    class="w-full h-auto object-cover object-center"
+    alt="Rosa"
+    src={photo}
+  />
+
+  <div class="p-3 flex flex-col gap-2 flex-grow">
+    <div class="flex items-center justify-between">
+      <h3 class="text-md font-semibold text-gray-800">
+        {title}
+      </h3>
+
+      <div class="flex gap-2 text-xs">
+        <span
+          class="bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium"
+        >
+          {duration}
+        </span>
+
+        {
+          hasPdf && (
+            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full font-medium">
+              Incluye PDF
+            </span>
+          )
+        }
+      </div>
+    </div>
+
+    {description && <p class="text-sm text-gray-700">{description}</p>}
+
+    <h4 class="text-lg font-semibold text-pink-600 mt-1">Beneficios</h4>
+
+    <ul class="list-disc list-inside text-gray-700 text-sm">
+      {benefits.map((b) => <li>{b}</li>)}
+    </ul>
+
+    <div class="mt-auto pt-2">
+      <p class="text-xl font-bold text-green-600 border-t border-gray-200 pt-2">
+        {price} €
+      </p>
+    </div>
+  </div>
+</div>

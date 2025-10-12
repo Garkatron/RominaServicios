@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/images/logo.png";
+---
+
+<nav
+  class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
+>
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+    {/* Logo */}
+    <a href="_blank" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <Image
+        class="h-12 w-12 object-contain"
+        src={Logo}
+        alt="Logo"
+        width={50}
+        height={50}
+      />
+      <span class="text-2xl font-semibold text-gray-900 dark:text-white"
+        >Magia En Velas</span
+      >
+    </a>
+
+    <button
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+      </svg>
+    </button>
+
+    {/* Menú */}
+    <div
+      class="hidden md:flex md:items-center md:space-x-8"
+      id="navbar-default"
+    >
+      <ul class="flex flex-col md:flex-row md:space-x-6 font-medium">
+        <li>
+          <a
+            href="#"
+            class="block py-2 px-3 rounded-sm text-blue-700 md:text-blue-700 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
+            aria-current="page"
+          >
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a
+            href="#sobremi"
+            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
+          >
+            Sobre Mi
+          </a>
+        </li>
+        <li>
+          <a
+            href="#servicios"
+            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
+          >
+            Servicios
+          </a>
+        </li>
+        <li>
+          <a
+            href="#tarot"
+            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
+          >
+            Tarot
+          </a>
+        </li>
+        <li>
+          <a
+            href="#testimonios"
+            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
+          >
+            Testimonios
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
