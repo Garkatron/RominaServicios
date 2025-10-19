@@ -131,34 +131,29 @@ import Navbar from "../components/Navbar.astro";
         ayuden a avanzar en tu camino.
       </p>
     </section>
-    <!-- ! CONTENIDO -->
-    <section
-      id="introservicios"
-      class="mx-auto p-6 bg-white rounded-2xl shadow-md my-10"
-    >
-      <h1 class="text-4xl font-bold mb-6">
-        Rituales Energéticos para tu Bienestar
-      </h1>
-
-      <p class="text-gray-700 leading-relaxed">
-        Mis rituales son prácticas conscientes y personalizadas que trabajan la
-        energía, la intención y el simbolismo para ayudarte a transformar tu
-        vida. Cada uno está diseñado para acompañarte en procesos de sanación,
-        crecimiento personal y manifestación de tus deseos.
-      </p>
-      <p class="text-gray-700 leading-relaxed">
-        A través de estos rituales podrás liberar bloqueos, atraer experiencias
-        positivas y equilibrar tu interior con tu entorno. Son espacios seguros
-        para reconectar contigo mismo(a), cerrar ciclos y abrir caminos hacia
-        nuevas oportunidades.
-      </p>
-    </section>
-    <!-- ! SERVICIOS -->
     <section
       id="servicios"
       class="mx-auto p-6 bg-white rounded-2xl shadow-md my-1"
     >
       <h1 class="text-3xl font-bold mb-6 text-center">Servicios Mágicos</h1>
+
+      <article
+        id="introservicios"
+        class="mx-auto p-2 bg-white rounded-2xl my-10"
+      >
+        <p class="text-gray-700 leading-relaxed">
+          Mis rituales son prácticas conscientes y personalizadas que trabajan
+          la energía, la intención y el simbolismo para ayudarte a transformar
+          tu vida. Cada uno está diseñado para acompañarte en procesos de
+          sanación, crecimiento personal y manifestación de tus deseos.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          A través de estos rituales podrás liberar bloqueos, atraer
+          experiencias positivas y equilibrar tu interior con tu entorno. Son
+          espacios seguros para reconectar contigo mismo(a), cerrar ciclos y
+          abrir caminos hacia nuevas oportunidades.
+        </p>
+      </article>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <!-- Ritual de Amor de Pareja -->
@@ -387,4 +382,18 @@ import Navbar from "../components/Navbar.astro";
       </div>
     </div>
   </section>
+  <footer
+    class="flex justify-between items-center py-4 text-sm text-gray-500
+  bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 text-center border-t border-gray-200 dark:border-gray-700 p-4 rounded-t-3xl"
+  >
+    <p>© 2025 Romina Minguez. Todos los derechos reservados.</p>
+    <p>
+      Diseño y Produccion por <a
+        href="https://garkatron.github.io/Portfolio/"
+        target="_blank"
+        class="text-blue-500 hover:text-purple-500 hover:underline"
+        >Matias Gulias</a
+      >
+    </p>
+  </footer>
 </html>
