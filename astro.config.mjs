@@ -8,7 +8,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://rominaminguez.com',
-  base: '/RominaServicios',
+  base: '/',
 });
 
 
