@@ -11,6 +11,8 @@ import Tarot2 from "../assets/images/tarot2.jpg";
 import { Image } from "astro:assets";
 import Card from "../components/Card.astro";
 import Navbar from "../components/Navbar.astro";
+
+const ACTIVE_DISCOUNT = 30;
 ---
 
 <html lang="en">
@@ -53,7 +55,7 @@ import Navbar from "../components/Navbar.astro";
           <Image
             src={RominaFoto}
             alt="Imagen central"
-            class="w-full max-h-80 lg:max-h-96 rounded-xl object-cover"
+class="w-full h-80 lg:h-[500px] rounded-xl object-cover object-top"
           />
         </div>
 
@@ -86,9 +88,9 @@ import Navbar from "../components/Navbar.astro";
       <h1 class="text-4xl font-bold mb-6">Sobre Mi</h1>
 
       <p class="text-gray-700 leading-relaxed mb-4">
-        Romina, <span class="font-semibold">Tarotista y Guía Espiritual</span> –
-        25 años de experiencia. Acompaño a personas que buscan claridad, respuestas
-        y equilibrio en su vida, guiándolas con respeto, profesionalismo y empatía.
+        Romina, <span class="font-semibold">Tarotista y Guía Espiritual</span> – 25
+        años de experiencia. Acompaño a personas que buscan claridad, respuestas y
+        equilibrio en su vida, guiándolas con respeto, profesionalismo y empatía.
       </p>
 
       <p class="text-gray-700 leading-relaxed mb-4">
@@ -115,8 +117,8 @@ import Navbar from "../components/Navbar.astro";
           equilibrio de tu energía.
         </li>
         <li>
-          <span class="font-semibold">Rituales de Alta Magia Blanca:</span> para
-          atraer luz y protección.
+          <span class="font-semibold">Rituales de Alta Magia Blanca:</span> para atraer
+          luz y protección.
         </li>
         <li>
           <span class="font-semibold">Velomancia:</span> lectura y mensajes a través
@@ -127,8 +129,8 @@ import Navbar from "../components/Navbar.astro";
       <p class="text-gray-700 leading-relaxed">
         Te ofrezco un espacio <span class="font-semibold text-purple-600"
           >seguro y confidencial</span
-        > para que puedas encontrar guía, luz y herramientas espirituales que te
-        ayuden a avanzar en tu camino.
+        > para que puedas encontrar guía, luz y herramientas espirituales que te ayuden
+        a avanzar en tu camino.
       </p>
     </section>
     <section
@@ -170,6 +172,7 @@ import Navbar from "../components/Navbar.astro";
             "Favorece la sanación de heridas pasadas.",
           ]}
           price={88}
+          discount={ACTIVE_DISCOUNT}
         />
 
         <!-- Corte de Lazos Energéticos -->
@@ -186,6 +189,7 @@ import Navbar from "../components/Navbar.astro";
             "Abre espacio para lo nuevo y positivo.",
           ]}
           price={88}
+          discount={ACTIVE_DISCOUNT}
         />
 
         <!-- Ritual de Prosperidad -->
@@ -202,6 +206,7 @@ import Navbar from "../components/Navbar.astro";
             "Atrae oportunidades y estabilidad económica.",
           ]}
           price={88}
+          discount={ACTIVE_DISCOUNT}
         />
 
         <!-- Ritual de Alejamiento Energético -->
@@ -218,6 +223,7 @@ import Navbar from "../components/Navbar.astro";
             "Abre espacio para nuevas experiencias positivas.",
           ]}
           price={88}
+          discount={ACTIVE_DISCOUNT}
         />
 
         <!-- Ritual de Amor Propio -->
@@ -234,6 +240,7 @@ import Navbar from "../components/Navbar.astro";
             "Conecta con tu energía auténtica y tu valor interior.",
           ]}
           price={88}
+          discount={ACTIVE_DISCOUNT}
         />
       </div>
     </section>

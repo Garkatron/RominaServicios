@@ -9,6 +9,7 @@ interface CardProps {
   benefits?: string[];
   price: number;
   title: string;
+  discount?: number;
 }
 
 const {
@@ -19,7 +20,11 @@ const {
   description = "",
   benefits = [],
   price,
+  discount = 0,
 }: CardProps = Astro.props as CardProps;
+
+const finalPrice =
+  discount > 0 ? (price * (1 - discount / 100)).toFixed(2) : price;
 ---
 
 <div
@@ -63,9 +68,25 @@ const {
     </ul>
 
     <div class="mt-auto pt-2">
-      <p class="text-xl font-bold text-green-600 border-t border-gray-200 pt-2">
-        {price} €
-      </p>
+      <div class="mt-auto pt-2 border-t border-gray-200">
+        {
+          discount > 0 && (
+            <p class="text-sm text-gray-400 line-through">{price} €</p>
+          )
+        }
+
+        <p class="text-xl font-bold text-green-600">
+          {finalPrice} €
+        </p>
+
+        {
+          discount > 0 && (
+            <span class="text-xs text-red-500 font-semibold">
+              -{discount}% OFF
+            </span>
+          )
+        }
+      </div>
     </div>
   </div>
 </div>
