@@ -1,0 +1,234 @@
+{
+  "site": {
+    "title": "Romina Minguez",
+    "tagline": "Acompañamiento emocional holístico",
+    "subtitle": "Claridad, contención y guía para tu proceso personal.",
+    "heroQuote": "No es solo una lectura. Es un espacio de acompañamiento, claridad y transformación emocional.",
+    "aboutQuote": "Acompañar también es ayudar a la persona a reencontrarse consigo misma.",
+    "year": 2025,
+    "author": "Matias Gulias",
+    "authorUrl": "https://garkatron.github.io/Portfolio/"
+  },
+  "contact": {
+    "phone": "+34 624 928 417",
+    "phoneHref": "tel:+34624928417",
+    "tiktok": {
+      "label": "TikTok @Romina",
+      "url": "https://www.tiktok.com/@romina.minguez?_t=ZN-90g3xxsrp70&_r=1"
+    },
+    "instagram": {
+      "label": "Instagram @Romina",
+      "url": "https://www.instagram.com/romina.minguez/"
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "url": "https://wa.me/34624928417"
+    }
+  },
+  "nav": [
+    { "label": "Inicio", "href": "#" },
+    { "label": "Sobre mí", "href": "#sobremi" },
+    { "label": "Herramientas", "href": "#herramientas" },
+    { "label": "Acompañamiento", "href": "#sesiones" },
+    { "label": "Experiencias", "href": "#testimonios" }
+  ],
+  "about": {
+    "heading": "Sobre mí",
+    "paragraphs": [
+      "Soy Romina Minguez y acompaño a personas que atraviesan momentos de confusión, bloqueos emocionales o situaciones que necesitan comprender desde una mirada más profunda.",
+      "Mi conexión con el mundo espiritual comenzó a los 6 años, fruto de un legado transmitido por mi abuela. Con ella desarrollé mis dones; desde su partida, continuar este camino es la forma de seguir unidas en energía.",
+      "Mi trabajo no se basa únicamente en una lectura puntual, sino en brindar contención, claridad y guía durante el proceso personal de cada consultante. A través del tarot, la velomancia y herramientas intuitivas, acompaño desde una mirada humana, cercana y holística."
+    ],
+    "tags": ["25 años de experiencia", "Online · Personalizado", "Espacio seguro y confidencial"]
+  },
+  "tools": {
+    "heading": "Herramientas de acompañamiento",
+    "intro": "Las herramientas que utilizo forman parte de un acompañamiento emocional y energético pensado para ayudarte a comprender lo que estás viviendo, encontrar claridad y transitar tus procesos con mayor conciencia.",
+    "items": [
+      {
+        "icon": "🔮",
+        "title": "Tarot intuitivo",
+        "description": "Herramienta de claridad y orientación emocional para comprender situaciones personales y acompañar procesos de toma de decisiones."
+      },
+      {
+        "icon": "🕯️",
+        "title": "Velomancia",
+        "description": "Lectura energética y simbólica utilizada para observar procesos internos, bloqueos emocionales y movimientos energéticos."
+      },
+      {
+        "icon": "✨",
+        "title": "Guía intuitiva",
+        "description": "Espacio de escucha, reflexión y acompañamiento emocional desde una mirada consciente y holística."
+      }
+    ]
+  },
+  "howIWork": {
+    "heading": "Cómo trabajo",
+    "body": "Cada proceso es único. Mi objetivo no es darte respuestas rápidas, sino acompañarte a comprender lo que estás viviendo desde un espacio seguro, humano y consciente. Trabajo desde la escucha, la intuición y la orientación emocional, integrando distintas herramientas según las necesidades de cada persona.",
+    "pillars": [
+      { "icon": "🤍", "label": "Escucha activa" },
+      { "icon": "🌿", "label": "Sin dependencia" },
+      { "icon": "🔒", "label": "Confidencialidad" },
+      { "icon": "💫", "label": "Proceso personal" }
+    ]
+  },
+  "sessions": {
+    "heading": "Sesiones de acompañamiento",
+    "intro": "Espacios personalizados orientados a brindar contención, guía y reflexión. Cada sesión integra herramientas intuitivas y energéticas como apoyo en el proceso.",
+    "activeDiscount": 30,
+    "items": [
+      {
+        "id": "amor-pareja",
+        "icon": "💕",
+        "title": "Acompañamiento en pareja",
+        "duration": "1 mes",
+        "hasPdf": true,
+        "description": "Fortalece la conexión y armonía en tu relación. Trabajo orientado a nutrir el vínculo, sanar bloqueos y equilibrar la energía entre ambos.",
+        "benefits": [
+          "Refuerza la comunicación y el entendimiento mutuo.",
+          "Equilibra la energía emocional de la pareja.",
+          "Reaviva la conexión desde un lugar consciente.",
+          "Favorece la sanación de heridas pasadas."
+        ],
+        "price": 88
+      },
+      {
+        "id": "corte-lazos",
+        "icon": "✂️",
+        "title": "Corte de lazos energéticos",
+        "duration": "1 mes",
+        "hasPdf": true,
+        "description": "Libérate de vínculos y energías que te atan al pasado. Proceso orientado a soltar relaciones o situaciones que drenan tu energía y recuperar tu libertad emocional.",
+        "benefits": [
+          "Rompe conexiones energéticas dañinas.",
+          "Devuelve tu energía personal y tu paz interior.",
+          "Ayuda a cerrar ciclos y sanar desde la raíz.",
+          "Abre espacio para lo nuevo y positivo."
+        ],
+        "price": 88
+      },
+      {
+        "id": "prosperidad",
+        "icon": "💰",
+        "title": "Proceso de prosperidad",
+        "duration": "1 mes",
+        "hasPdf": true,
+        "description": "Alinea tu energía con la frecuencia de la abundancia. Trabajo orientado a liberar bloqueos y abrirte al flujo de la prosperidad con claridad.",
+        "benefits": [
+          "Activa tu flujo energético de prosperidad.",
+          "Libera creencias limitantes sobre el dinero.",
+          "Potencia la creatividad y la acción inspirada.",
+          "Atrae oportunidades y estabilidad económica."
+        ],
+        "price": 88
+      },
+      {
+        "id": "alejamiento",
+        "icon": "🌑",
+        "title": "Alejamiento energético",
+        "duration": "1 mes",
+        "hasPdf": true,
+        "description": "Suelta con amor lo que ya no resuena contigo. Proceso para liberar energías densas, cortar lazos negativos y recuperar tu equilibrio interior.",
+        "benefits": [
+          "Facilita el cierre de ciclos y la liberación emocional.",
+          "Protege tu energía personal.",
+          "Promueve la claridad y el bienestar interior.",
+          "Abre espacio para nuevas experiencias positivas."
+        ],
+        "price": 88
+      },
+      {
+        "id": "amor-propio",
+        "icon": "🌸",
+        "title": "Proceso de amor propio",
+        "duration": "1 mes",
+        "hasPdf": true,
+        "description": "Reconecta con tu esencia y fortalece tu amor interior. Acompañamiento orientado a sanar emociones, elevar tu vibración y empoderarte desde el autocuidado.",
+        "benefits": [
+          "Aumenta tu autoestima y amor hacia ti mismo/a.",
+          "Libera bloqueos emocionales y viejas heridas.",
+          "Te ayuda a poner límites sanos y amorosos.",
+          "Conecta con tu energía auténtica y tu valor interior."
+        ],
+        "price": 88
+      }
+    ]
+  },
+  "tarot": {
+    "heading": "Sesiones de tarot",
+    "items": [
+      {
+        "id": "rapida",
+        "icon": "🔮",
+        "title": "Lectura rápida",
+        "duration": "1 sesión",
+        "hasPdf": false,
+        "description": "Orientación puntual para una situación concreta.",
+        "benefits": [
+          "1 pregunta o enfoque específico.",
+          "Respuesta puntual o guía inmediata."
+        ],
+        "price": 15
+      },
+      {
+        "id": "completa",
+        "icon": "🌙",
+        "title": "Lectura completa",
+        "duration": "1 sesión",
+        "hasPdf": false,
+        "description": "Exploración profunda de una o varias áreas de tu vida.",
+        "benefits": [
+          "Lectura general o por área (amor, propósito, energía, bloqueos).",
+          "Incluye interpretación completa y consejo canalizado."
+        ],
+        "price": 33
+      },
+      {
+        "id": "lectura-ritual",
+        "icon": "🔥",
+        "title": "Lectura + proceso energético",
+        "duration": "1 sesión",
+        "hasPdf": false,
+        "description": "Combinación de lectura profunda y trabajo energético personalizado.",
+        "benefits": [
+          "Lectura profunda y canalizada.",
+          "Proceso personalizado para desbloquear, sanar o manifestar."
+        ],
+        "price": 68
+      }
+    ]
+  },
+  "testimonials": {
+    "heading": "Experiencias de acompañamiento",
+    "items": [
+      {
+        "id": 1,
+        "name": "Mikaela Andrea Zalazar",
+        "context": "Cáncer de ovario de alto grado",
+        "text": "Apenas estaba por empezar mi tratamiento, llena de dudas, miedos e incertidumbres. Un día apareció Romy; sin pedirme nada, me ofreció su ayuda con sus velitas y su apoyo espiritual, enviándome toda su energía para transitar mis quimioterapias, miedos, pérdida de pelo y tristezas que no sabía cómo superar. Gracias a sus velitas, encontré un gran apoyo emocional para enfrentar quimioterapias de 6 horas cada 21 días. Hoy puedo decir con orgullo que estoy curada y que logré llevar bien este largo proceso emocionalmente.",
+        "highlight": "Gracias, Romy, por tu trabajo increíble. No duden en probar sus velitas o una tirada de tarot; es muy efectiva y realiza un trabajo maravilloso."
+      },
+      {
+        "id": 2,
+        "name": "Cliente",
+        "context": null,
+        "text": "Eres una persona acertada y tus velas son magníficas, eres una persona de mucha luz.",
+        "highlight": "Muy recomendada."
+      },
+      {
+        "id": 3,
+        "name": "Cliente",
+        "context": null,
+        "text": "Llevo pidiendo ayuda a Romi desde que la conocí, tanto con tiradas del tarot como con las velas, y la verdad es que es increíble cómo acierta y cómo funciona todo. Seguí sus consejos de los baños y también una pasada — el cambio fue total.",
+        "highlight": "La recomiendo al 1000% a todo el mundo porque no se van a arrepentir."
+      },
+      {
+        "id": 4,
+        "name": "Jorge",
+        "context": "En memoria de Rocío",
+        "text": "Perdí al amor de mi vida el 21 de julio de 2025. Una madrugada de agosto, cuando estallaba en llantos, recibí un mensaje de Romina. Tras leer sus palabras, sentí que Rocío me decía esas cosas — textuales palabras que solo podría decir ella. Romina me trajo a Rocío una madrugada en la que estaba muy triste, sin rumbo. Desde ese momento empecé a hacer UN DÍA A LA VEZ.",
+        "highlight": "Gracias Romina. Gracias Rocío, amor de mi vida."
+      }
+    ]
+  }
+}

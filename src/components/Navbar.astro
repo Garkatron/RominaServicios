@@ -1,91 +1,204 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "../assets/images/logo.png";
+import data from "../data.json";
 ---
 
-<nav
-  class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
->
-  <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-    {/* Logo */}
-    <a href="_blank" class="flex items-center space-x-3 rtl:space-x-reverse">
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="navbar-brand">
       <Image
-        class="h-12 w-12 object-contain"
+        class="navbar-logo"
         src={Logo}
-        alt="Logo"
-        width={50}
-        height={50}
+        alt="Logo Romina Minguez"
+        width={44}
+        height={44}
       />
-      <span class="text-2xl font-semibold text-gray-900 dark:text-white"
-        >Romina Minguez</span
-      >
+      <span class="navbar-name">Romina Minguez</span>
     </a>
 
     <button
-      data-collapse-toggle="navbar-default"
-      type="button"
-      class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600"
-      aria-controls="navbar-default"
+      class="navbar-toggle"
+      id="navbar-toggle"
+      aria-controls="navbar-menu"
       aria-expanded="false"
+      aria-label="Abrir menú"
     >
-      <span class="sr-only">Open main menu</span>
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-      </svg>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
-    {/* Menú */}
-    <div
-      class="hidden md:flex md:items-center md:space-x-8"
-      id="navbar-default"
-    >
-      <ul class="flex flex-col md:flex-row md:space-x-6 font-medium">
+    <ul class="navbar-menu" id="navbar-menu" role="list">
+      {data.nav.map((item) => (
         <li>
-          <a
-            href="#"
-            class="block py-2 px-3 rounded-sm text-blue-700 md:text-blue-700 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
-            aria-current="page"
-          >
-            Inicio
-          </a>
+          <a href={item.href} class="navbar-link">{item.label}</a>
         </li>
-        <li>
-          <a
-            href="#sobremi"
-            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
-          >
-            Sobre Mi
-          </a>
-        </li>
-        <li>
-          <a
-            href="#servicios"
-            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
-          >
-            Servicios
-          </a>
-        </li>
-        <li>
-          <a
-            href="#tarot"
-            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
-          >
-            Tarot
-          </a>
-        </li>
-        <li>
-          <a
-            href="#testimonios"
-            class="block py-2 px-3 rounded-sm text-gray-900 md:text-gray-900 md:p-0 dark:text-white hover:bg-gray-100 md:hover:bg-transparent transition"
-          >
-            Testimonios
-          </a>
-        </li>
-      </ul>
-    </div>
+      ))}
+      <li>
+        <a href={data.contact.whatsapp.url} target="_blank" class="navbar-cta">
+          Reservar sesión
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 247, 243, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 107, 89, 0.12);
+  }
+
+  .navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .navbar-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .navbar-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d1f3d;
+    letter-spacing: 0.01em;
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #4a3a55;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .navbar-link:hover {
+    color: #2d1f3d;
+    background: rgba(139, 107, 89, 0.08);
+  }
+
+  .navbar-cta {
+    display: inline-block;
+    margin-left: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background: #2d1f3d;
+    color: #f5ede0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .navbar-cta:hover {
+    background: #4a3a55;
+    transform: translateY(-1px);
+  }
+
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .navbar-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #2d1f3d;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-toggle {
+      display: flex;
+    }
+
+    .navbar-menu {
+      display: none;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 1rem 1.5rem 1.5rem;
+      background: rgba(250, 247, 243, 0.98);
+      border-bottom: 1px solid rgba(139, 107, 89, 0.12);
+    }
+
+    .navbar-menu.open {
+      display: flex;
+    }
+
+    .navbar-cta {
+      margin-left: 0;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('navbar-toggle');
+  const menu = document.getElementById('navbar-menu');
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Cerrar al hacer clic en un enlace
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

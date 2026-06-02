@@ -7,400 +7,887 @@ import BlancoNegro from "../assets/images/VelasBlancoNegro.jpg";
 import RominaFoto from "../assets/images/romina2.jpg";
 import Tijeras from "../assets/images/tijeras.jpg";
 import Tarot from "../assets/images/tarot.webp";
-import Tarot2 from "../assets/images/tarot2.jpg";
 import { Image } from "astro:assets";
 import Card from "../components/Card.astro";
 import Navbar from "../components/Navbar.astro";
+import data from "../data.json";
 
-const ACTIVE_DISCOUNT = 30;
+// Mapeo de imágenes por id de sesión
+const sessionImages: Record<string, ImageMetadata> = {
+  "amor-pareja": Rosa2,
+  "corte-lazos": Tijeras,
+  "prosperidad": Monedas,
+  "alejamiento": BlancoNegro,
+  "amor-propio": VelaRosa,
+};
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>RominaMinguez</title>
+    <meta name="description" content={`${data.site.tagline} — ${data.site.subtitle}`} />
+    <title>{data.site.title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="container mx-auto p-4">
+
+  <body>
     <Navbar />
 
-    <section>
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
-        <!-- Contacto -->
-        <div
-          class="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 items-center justify-center"
-        >
-          <h2 class="text-4xl font-bold text-gray-800">Contáctame</h2>
-          <div class="flex flex-col gap-1.5 text-blue-600">
-            <a class="text-2xl" href="tel:+34696302023">+34 696 302023</a>
-            <a
-              class="text-2xl"
-              href="https://www.tiktok.com/@romina.minguez?_t=ZN-90g3xxsrp70&_r=1"
-              target="_blank">Tiktok @Romina</a
-            >
-            <a
-              class="text-2xl"
-              href="https://www.instagram.com/romina.minguez/"
-              target="_blank">Instagram @Romina</a
-            >
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero-grid">
+        <!-- Columna izquierda: contacto -->
+        <aside class="hero-contact fade-in" style="--delay: 0.1s">
+          <p class="contact-eyebrow">Contacto directo</p>
+          <div class="contact-links">
+            <a href={data.contact.phoneHref} class="contact-item">
+              <span class="contact-icon">📞</span>
+              <span>{data.contact.phone}</span>
+            </a>
+            <a href={data.contact.whatsapp.url} target="_blank" class="contact-item">
+              <span class="contact-icon">💬</span>
+              <span>WhatsApp</span>
+            </a>
+            <a href={data.contact.tiktok.url} target="_blank" class="contact-item">
+              <span class="contact-icon">🎵</span>
+              <span>{data.contact.tiktok.label}</span>
+            </a>
+            <a href={data.contact.instagram.url} target="_blank" class="contact-item">
+              <span class="contact-icon">📷</span>
+              <span>{data.contact.instagram.label}</span>
+            </a>
+          </div>
+          <a href={data.contact.whatsapp.url} target="_blank" class="btn-primary">
+            Reservar sesión
+          </a>
+        </aside>
+
+        <!-- Columna central: foto + headline -->
+        <div class="hero-center fade-in" style="--delay: 0.2s">
+          <div class="hero-image-wrap">
+            <Image
+              src={RominaFoto}
+              alt="Romina Minguez"
+              class="hero-image"
+            />
+            <div class="hero-image-ring"></div>
+          </div>
+          <div class="hero-text">
+            <h1 class="hero-title">{data.site.tagline}</h1>
+            <p class="hero-subtitle">{data.site.subtitle}</p>
           </div>
         </div>
 
-        <!-- Imagen central -->
-        <div
-          class="bg-white rounded-2xl shadow-md p-2 col-span-1 lg:col-span-2 flex justify-center items-center"
-        >
-          <Image
-            src={RominaFoto}
-            alt="Imagen central"
-class="w-full h-80 lg:h-[500px] rounded-xl object-cover object-top"
-          />
+        <!-- Columna derecha: testimonio destacado -->
+        <aside class="hero-review fade-in" style="--delay: 0.3s">
+          <p class="contact-eyebrow">Lo que dicen</p>
+          <blockquote class="hero-quote">
+            <p>"{data.testimonials.items[0].text.slice(0, 180)}…"</p>
+            <footer>— {data.testimonials.items[0].name}</footer>
+          </blockquote>
+          <a href="#testimonios" class="link-more">Ver más experiencias →</a>
+        </aside>
+      </div>
+
+      <!-- Frase destacada -->
+      <div class="hero-banner fade-in" style="--delay: 0.4s">
+        <span class="banner-ornament">✦</span>
+        <p class="banner-text">"{data.site.heroQuote}"</p>
+        <span class="banner-ornament">✦</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SOBRE MÍ
+    ═══════════════════════════════════════════ -->
+    <section id="sobremi" class="section section--about">
+      <div class="section-inner">
+        <div class="about-layout">
+          <div class="about-text fade-in">
+            <span class="section-eyebrow">Sobre mí</span>
+            <h2 class="section-title">{data.about.heading}</h2>
+            {data.about.paragraphs.map((p) => (
+              <p class="body-text">{p}</p>
+            ))}
+            <div class="about-tags">
+              {data.about.tags.map((tag) => (
+                <span class="about-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HERRAMIENTAS
+    ═══════════════════════════════════════════ -->
+    <section id="herramientas" class="section section--tools">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Metodología</span>
+          <h2 class="section-title">{data.tools.heading}</h2>
+          <p class="section-intro">{data.tools.intro}</p>
         </div>
 
-        <!-- Reseñas -->
-        <div
-          class="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 items-center justify-center"
-        >
-          <h2 id="reseña_contador" class="text-4xl font-bold text-gray-800">
-            Reseñas
-          </h2>
-          <p
-            id="reseña"
-            class="text-gray-600 leading-relaxed text-sm lg:text-base"
-          >
-            Encontré a Romi de casualidad en TikTok y cuando más lo necesitaba,
-            dejé de creer en las casualidades. A raíz de su limpieza de bloqueos
-            se me han despejado las piedras del camino y sobretodo me ha dado <span
-              class="font-semibold text-gray-800">PAZ</span
-            >, y en eso es experta. La recomiendo al 300%, 100% sería poco 😊
-          </p>
-          <a href="#testimonios">Más</a>
+        <div class="tools-grid">
+          {data.tools.items.map((tool, i) => (
+            <div class="tool-card fade-in" style={`--delay: ${0.1 * i}s`}>
+              <div class="tool-icon">{tool.icon}</div>
+              <h3 class="tool-title">{tool.title}</h3>
+              <p class="tool-description">{tool.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section
-      id="sobremi"
-      class="mx-auto p-6 bg-white rounded-2xl shadow-md my-10"
-    >
-      <h1 class="text-4xl font-bold mb-6">Sobre Mi</h1>
-
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Romina, <span class="font-semibold">Tarotista y Guía Espiritual</span> – 25
-        años de experiencia. Acompaño a personas que buscan claridad, respuestas y
-        equilibrio en su vida, guiándolas con respeto, profesionalismo y empatía.
-      </p>
-
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Mi conexión con el mundo espiritual comenzó desde la infancia, a los 6
-        años, y es fruto de un legado mágico transmitido por mi abuela. Con ella
-        descubrí y desarrollé mis dones; desde su partida, continuar este camino
-        de vida es la forma de seguir unidas en energía.
-      </p>
-
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Hoy pongo todo este recorrido a tu servicio a través de sesiones online
-        personalizadas de:
-      </p>
-
-      <ul
-        class="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-1"
-      >
-        <li>
-          <span class="font-semibold">Tarot:</span> orientación y claridad para tus
-          decisiones.
-        </li>
-        <li>
-          <span class="font-semibold">Trabajos energéticos:</span> armonización y
-          equilibrio de tu energía.
-        </li>
-        <li>
-          <span class="font-semibold">Rituales de Alta Magia Blanca:</span> para atraer
-          luz y protección.
-        </li>
-        <li>
-          <span class="font-semibold">Velomancia:</span> lectura y mensajes a través
-          de las velas.
-        </li>
-      </ul>
-
-      <p class="text-gray-700 leading-relaxed">
-        Te ofrezco un espacio <span class="font-semibold text-purple-600"
-          >seguro y confidencial</span
-        > para que puedas encontrar guía, luz y herramientas espirituales que te ayuden
-        a avanzar en tu camino.
-      </p>
-    </section>
-    <section
-      id="servicios"
-      class="mx-auto p-6 bg-white rounded-2xl shadow-md my-1"
-    >
-      <h1 class="text-3xl font-bold mb-6 text-center">Servicios Mágicos</h1>
-
-      <article
-        id="introservicios"
-        class="mx-auto p-2 bg-white rounded-2xl my-10"
-      >
-        <p class="text-gray-700 leading-relaxed">
-          Mis rituales son prácticas conscientes y personalizadas que trabajan
-          la energía, la intención y el simbolismo para ayudarte a transformar
-          tu vida. Cada uno está diseñado para acompañarte en procesos de
-          sanación, crecimiento personal y manifestación de tus deseos.
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-          A través de estos rituales podrás liberar bloqueos, atraer
-          experiencias positivas y equilibrar tu interior con tu entorno. Son
-          espacios seguros para reconectar contigo mismo(a), cerrar ciclos y
-          abrir caminos hacia nuevas oportunidades.
-        </p>
-      </article>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Ritual de Amor de Pareja -->
-        <Card
-          photo={Rosa2}
-          title="💕 Ritual de Amor de Pareja"
-          duration="1 mes"
-          hasPdf={true}
-          description="Fortalece la conexión y armonía en tu relación. Este ritual está diseñado para nutrir el vínculo amoroso, sanar bloqueos y reavivar la energía entre ambos."
-          benefits={[
-            "Refuerza la comunicación y el entendimiento mutuo.",
-            "Equilibra la energía emocional de la pareja.",
-            "Reaviva la pasión y el cariño desde un amor consciente.",
-            "Favorece la sanación de heridas pasadas.",
-          ]}
-          price={88}
-          discount={ACTIVE_DISCOUNT}
-        />
-
-        <!-- Corte de Lazos Energéticos -->
-        <Card
-          photo={Tijeras}
-          title="✂️ Corte de Lazos Energéticos"
-          duration="1 mes"
-          hasPdf={true}
-          description="Libérate de vínculos y energías que te atan al pasado. Este proceso energético te ayuda a soltar relaciones o situaciones que drenan tu energía y recuperar tu libertad emocional."
-          benefits={[
-            "Rompe conexiones energéticas dañinas.",
-            "Devuelve tu energía personal y tu paz interior.",
-            "Ayuda a cerrar ciclos y sanar desde la raíz.",
-            "Abre espacio para lo nuevo y positivo.",
-          ]}
-          price={88}
-          discount={ACTIVE_DISCOUNT}
-        />
-
-        <!-- Ritual de Prosperidad -->
-        <Card
-          photo={Monedas}
-          title="💰 Ritual de Prosperidad"
-          duration="1 mes"
-          hasPdf={true}
-          description="Alinea tu energía con la frecuencia de la prosperidad. Este ritual te ayuda a liberar bloqueos económicos y abrirte al flujo de la abundancia con claridad y confianza."
-          benefits={[
-            "Activa tu flujo energético de prosperidad.",
-            "Libera creencias limitantes sobre el dinero.",
-            "Potencia la creatividad y la acción inspirada.",
-            "Atrae oportunidades y estabilidad económica.",
-          ]}
-          price={88}
-          discount={ACTIVE_DISCOUNT}
-        />
-
-        <!-- Ritual de Alejamiento Energético -->
-        <Card
-          photo={BlancoNegro}
-          title="🌑 Ritual de Alejamiento Energético"
-          duration="1 mes"
-          hasPdf={true}
-          description="Suelta con amor lo que ya no vibra contigo. Este ritual te ayuda a liberar energías densas, cortar lazos negativos y recuperar tu equilibrio interior."
-          benefits={[
-            "Facilita el cierre de ciclos y la liberación emocional.",
-            "Protege tu energía personal.",
-            "Promueve la claridad y el bienestar interior.",
-            "Abre espacio para nuevas experiencias positivas.",
-          ]}
-          price={88}
-          discount={ACTIVE_DISCOUNT}
-        />
-
-        <!-- Ritual de Amor Propio -->
-        <Card
-          photo={VelaRosa}
-          title="🌸 Ritual de Amor Propio"
-          duration="1 mes"
-          hasPdf={true}
-          description="Reconecta con tu esencia y fortalece tu amor interior. Este ritual te acompaña a sanar emociones, elevar tu vibración y empoderarte desde el autocuidado y la conciencia."
-          benefits={[
-            "Aumenta tu autoestima y amor hacia ti mismo(a).",
-            "Libera bloqueos emocionales y viejas heridas.",
-            "Te ayuda a poner límites sanos y amorosos.",
-            "Conecta con tu energía auténtica y tu valor interior.",
-          ]}
-          price={88}
-          discount={ACTIVE_DISCOUNT}
-        />
+    <!-- ═══════════════════════════════════════════
+         CÓMO TRABAJO
+    ═══════════════════════════════════════════ -->
+    <section class="section section--how">
+      <div class="section-inner">
+        <div class="how-layout fade-in">
+          <div class="how-text">
+            <span class="section-eyebrow">Mi enfoque</span>
+            <h2 class="section-title">{data.howIWork.heading}</h2>
+            <p class="body-text">{data.howIWork.body}</p>
+          </div>
+          <div class="how-pillars">
+            {data.howIWork.pillars.map((pillar) => (
+              <div class="pillar">
+                <span class="pillar-icon">{pillar.icon}</span>
+                <span class="pillar-label">{pillar.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="how-quote fade-in">
+          <span class="how-quote-mark">"</span>
+          <p>{data.site.aboutQuote}</p>
+        </div>
       </div>
     </section>
-    <section id="tarot" class="mx-auto p-6 bg-white rounded-2xl shadow-md my-1">
-      <h1 class="text-3xl font-bold mb-6 text-center">Tarot</h1>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Lectura rápida -->
-        <Card
-          photo={Tarot}
-          title="🔮 Lectura Rápida"
-          duration="1 sesión"
-          hasPdf={false}
-          benefits={[
-            "1 pregunta o enfoque específico.",
-            "Respuesta puntual o guía inmediata.",
-          ]}
-          price={15}
-        />
+    <!-- ═══════════════════════════════════════════
+         SESIONES
+    ═══════════════════════════════════════════ -->
+    <section id="sesiones" class="section section--sessions">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Acompañamiento</span>
+          <h2 class="section-title">{data.sessions.heading}</h2>
+          <p class="section-intro">{data.sessions.intro}</p>
+        </div>
 
-        <!-- Lectura completa -->
-        <Card
-          photo={Tarot}
-          title="🌙 Lectura Completa"
-          duration="1 sesión"
-          hasPdf={false}
-          benefits={[
-            "Lectura general o por área (amor, propósito, energía, bloqueos).",
-            "Incluye interpretación completa y consejo canalizado.",
-          ]}
-          price={33}
-        />
-
-        <!-- Lectura + Ritual Energético -->
-        <Card
-          photo={Tarot}
-          title="🔥 Lectura + Ritual Energético"
-          duration="1 sesión"
-          hasPdf={false}
-          benefits={[
-            "Lectura profunda y canalizada.",
-            "Ritual personalizado para desbloquear, sanar o manifestar.",
-          ]}
-          price={68}
-        />
+        <div class="cards-grid">
+          {data.sessions.items.map((item) => (
+            <Card
+              photo={sessionImages[item.id]}
+              title={`${item.icon} ${item.title}`}
+              duration={item.duration}
+              hasPdf={item.hasPdf}
+              description={item.description}
+              benefits={item.benefits}
+              price={item.price}
+              discount={data.sessions.activeDiscount}
+              variant="session"
+            />
+          ))}
+        </div>
       </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════
+         TAROT
+    ═══════════════════════════════════════════ -->
+    <section id="tarot" class="section section--tarot">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Lecturas</span>
+          <h2 class="section-title">{data.tarot.heading}</h2>
+        </div>
+
+        <div class="cards-grid cards-grid--3">
+          {data.tarot.items.map((item) => (
+            <Card
+              photo={Tarot}
+              title={`${item.icon} ${item.title}`}
+              duration={item.duration}
+              hasPdf={item.hasPdf}
+              description={item.description}
+              benefits={item.benefits}
+              price={item.price}
+              variant="tarot"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIOS
+    ═══════════════════════════════════════════ -->
+    <section id="testimonios" class="section section--testimonials">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Comunidad</span>
+          <h2 class="section-title">{data.testimonials.heading}</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          {data.testimonials.items.map((t, i) => (
+            <div class="testimonial-card fade-in" style={`--delay: ${0.1 * i}s`}>
+              <div class="testimonial-header">
+                <span class="testimonial-name">{t.name}</span>
+                {t.context && (
+                  <span class="testimonial-context">{t.context}</span>
+                )}
+              </div>
+              <p class="testimonial-text">{t.text}</p>
+              {t.highlight && (
+                <p class="testimonial-highlight">"{t.highlight}"</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>© {data.site.year} {data.site.title}. Todos los derechos reservados.</p>
+        <p>
+          Diseño y producción por{" "}
+          <a href={data.site.authorUrl} target="_blank" class="footer-link">
+            {data.site.author}
+          </a>
+        </p>
+      </div>
+    </footer>
   </body>
-
-  <!-- ! TESTIMONIOS -->
-
-  <section
-    id="testimonios"
-    class="mx-auto p-6 bg-white rounded-2xl shadow-lg my-10 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
-  >
-    <h2
-      class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2"
-    >
-      Testimonios: A quienes he ayudado
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-        <p class="text-gray-700 leading-relaxed">
-          <strong
-            >Mikaela Andrea Zalazar - Cáncer de ovario de alto grado:</strong
-          >
-          Apenas estaba por empezar mi tratamiento, llena de dudas, miedos e incertidumbres.
-          Un día apareció Romy; sin pedirme nada, me ofreció su ayuda con sus velitas
-          y su apoyo espiritual, enviándome toda su energía para transitar mis quimioterapias,
-          miedos, pérdida de pelo y tristezas que no sabía cómo superar.
-        </p>
-        <p class="text-gray-700 leading-relaxed mt-2">
-          Gracias a sus velitas, encontré un gran apoyo emocional para enfrentar
-          quimioterapias de 6 horas cada 21 días. Siempre que me sentía baja o
-          temerosa por los resultados, ella estaba ahí para encender una velita
-          acompañada de un mensaje lleno de su energía. Esto me permitió
-          transitar todo mi camino, y hoy puedo decir con orgullo que estoy
-          curada y que logré llevar bien este largo proceso emocionalmente.
-        </p>
-        <p class="leading-relaxed italic text-indigo-600 mt-2">
-          Gracias, Romy, por tu trabajo increíble. Tus velitas estuvieron muy
-          presentes, y tu energía fue clave. No duden en probar sus velitas o
-          una tirada de tarot con Romy; es muy efectiva y realiza un trabajo
-          maravilloso! 💖
-        </p>
-      </div>
-      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-        <p class="text-gray-700 leading-relaxed">
-          <strong
-            >Hola Romi, eres una persona acertada y tus velas son magníficas,
-            eres una persona de mucha luz!!! Séguire consultándote.
-          </strong>
-          <p class="leading-relaxed italic text-indigo-600 mt-2">
-            Muy recomendada.💖
-          </p>
-        </p>
-      </div>
-
-      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-        <p class="text-gray-700 leading-relaxed">
-          <strong
-            >Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con
-            tiradas del tarot como con las velas y la verdad es que es increíble
-            como acierta y como funciona todo ! Seguí sus consejos de los baños
-            y también una pasada el cambio! La recomiendo al 1000 x 1000 a todo
-            el mundo porque no se van a arrepentir!
-          </strong>
-          <p class="leading-relaxed italic text-indigo-600 mt-2">
-            Gracias por llegar a mi vida!💖
-          </p>
-        </p>
-      </div>
-
-      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-        <p class="text-gray-700 leading-relaxed">
-          <strong
-            >Hola!! Llevo pidiendo ayuda a Romi desde que la conocí tanto con
-            tiradas del tarot como con las velas y la verdad es que es increíble
-            como acierta y como funciona todo ! Seguí sus consejos de los baños
-            y también una pasada el cambio! La recomiendo al 1000 x 1000 a todo
-            el mundo porque no se van a arrepentir!
-          </strong>
-          <p class="leading-relaxed italic text-indigo-600 mt-2">
-            Gracias por llegar a mi vida!💖
-          </p>
-        </p>
-      </div>
-
-      <div class="p-4 bg-gray-50 rounded-lg shadow-md">
-        <p class="text-gray-700 leading-relaxed">
-          <strong>
-            Perdí al amor de mi vida el 21 de julio de 2025. Una madrugada de
-            agosto, cuando estallaba en llantos, recibí un mensaje de Romina. Yo
-            no soy de contestar mensajes, pero sentía que mi Rocío me decía que
-            le contesté, y así lo hice. Tras leer los mensajes de Romina, sentí
-            que Rocío me decía esas cosas… textuales palabras que solo sé yo que
-            podría decir Rocío. Romina me trajo a Rocío una madrugada en la que
-            estaba muy triste, sin rumbo. Desde ese momento y con palabras que
-            leí de Romina, que sentí que eran de Rocío, empecé a hacer UN DÍA A
-            LA VEZ. Gracias Romina. Gracias Rocío, amor de mi vida.
-          </strong>
-          <p class="leading-relaxed italic text-indigo-600 mt-2">
-            Jorge y Rocío
-          </p>
-        </p>
-      </div>
-    </div>
-  </section>
-  <footer
-    class="flex justify-between items-center py-4 text-sm text-gray-500
-  bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 text-center border-t border-gray-200 dark:border-gray-700 p-4 rounded-t-3xl"
-  >
-    <p>© 2025 Romina Minguez. Todos los derechos reservados.</p>
-    <p>
-      Diseño y Produccion por <a
-        href="https://garkatron.github.io/Portfolio/"
-        target="_blank"
-        class="text-blue-500 hover:text-purple-500 hover:underline"
-        >Matias Gulias</a
-      >
-    </p>
-  </footer>
 </html>
+
+<style is:global>
+  /* ─── Reset & base ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #faf7f3;
+    --cream-dark: #f5ede0;
+    --plum: #2d1f3d;
+    --plum-mid: #4a3a55;
+    --plum-light: #6b5a6e;
+    --terracotta: #8b6b59;
+    --gold: #b89b8a;
+    --border: rgba(139, 107, 89, 0.14);
+    --radius: 16px;
+    --section-pad: clamp(4rem, 8vw, 7rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--plum);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ─── Fade-in ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease var(--delay, 0s), transform 0.6s ease var(--delay, 0s);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── Section scaffold ─── */
+  .section {
+    padding: var(--section-pad) 0;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+
+  .section-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 600;
+    color: var(--plum);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    font-size: 0.95rem;
+    color: var(--plum-light);
+    line-height: 1.7;
+  }
+
+  .body-text {
+    font-size: 0.95rem;
+    color: var(--plum-light);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  /* ─── Buttons ─── */
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--plum);
+    color: var(--cream-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    background: var(--plum-mid);
+    transform: translateY(-2px);
+  }
+
+  .link-more {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--terracotta);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .link-more:hover { color: var(--plum); }
+
+  /* ─── Cards grid ─── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cards-grid--3 {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  /* ═══════════════ HERO ═══════════════ */
+  .hero {
+    padding: 3rem 0 0;
+  }
+
+  .hero-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .hero-contact,
+  .hero-review {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .contact-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--plum-mid);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .contact-item:hover {
+    background: rgba(139, 107, 89, 0.07);
+    color: var(--plum);
+  }
+
+  .contact-icon { font-size: 1rem; }
+
+  .hero-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    width: min(420px, 100%);
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 200px 200px 16px 16px;
+    display: block;
+  }
+
+  .hero-image-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 208px 208px 20px 20px;
+    border: 1px solid rgba(184, 155, 138, 0.35);
+    pointer-events: none;
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--plum);
+    line-height: 1.25;
+    margin-bottom: 0.625rem;
+  }
+
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--plum-light);
+    font-style: italic;
+  }
+
+  .hero-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--plum-light);
+    line-height: 1.65;
+  }
+
+  .hero-quote p {
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+  .hero-quote footer {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--terracotta);
+    font-style: normal;
+  }
+
+  .hero-banner {
+    max-width: 1200px;
+    margin: 2.5rem auto 0;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: var(--plum);
+    border-radius: 0;
+  }
+
+  .banner-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 400;
+    color: var(--cream-dark);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.5;
+    flex: 1;
+    max-width: 700px;
+  }
+
+  .banner-ornament {
+    color: var(--gold);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════ ABOUT ═══════════════ */
+  .section--about {
+    background: #fff;
+  }
+
+  .about-layout {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .about-text .section-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-top: 1.5rem;
+  }
+
+  .about-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--plum-mid);
+    background: rgba(45, 31, 61, 0.06);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  /* ═══════════════ TOOLS ═══════════════ */
+  .section--tools {
+    background: var(--cream);
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .tool-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.75rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(45, 31, 61, 0.08);
+  }
+
+  .tool-icon {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .tool-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--plum);
+    margin-bottom: 0.625rem;
+  }
+
+  .tool-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--plum-light);
+    line-height: 1.65;
+  }
+
+  /* ═══════════════ HOW I WORK ═══════════════ */
+  .section--how {
+    background: var(--cream-dark);
+  }
+
+  .how-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .how-text .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .how-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .pillar {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+  }
+
+  .pillar:hover { transform: translateY(-2px); }
+
+  .pillar-icon { font-size: 1.5rem; }
+
+  .pillar-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--plum-mid);
+  }
+
+  .how-quote {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.75rem;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .how-quote-mark {
+    position: absolute;
+    top: -0.5rem;
+    left: -0.25rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .how-quote p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-style: italic;
+    color: var(--plum-mid);
+    line-height: 1.6;
+  }
+
+  /* ═══════════════ SESSIONS ═══════════════ */
+  .section--sessions {
+    background: #fff;
+  }
+
+  /* ═══════════════ TAROT ═══════════════ */
+  .section--tarot {
+    background: var(--cream);
+  }
+
+  /* ═══════════════ TESTIMONIALS ═══════════════ */
+  .section--testimonials {
+    background: var(--plum);
+  }
+
+  .section--testimonials .section-eyebrow {
+    color: var(--gold);
+  }
+
+  .section--testimonials .section-title {
+    color: var(--cream-dark);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .testimonial-card {
+    background: rgba(255, 252, 248, 0.06);
+    border: 1px solid rgba(245, 237, 224, 0.12);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.25s;
+  }
+
+  .testimonial-card:hover {
+    background: rgba(255, 252, 248, 0.1);
+  }
+
+  .testimonial-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .testimonial-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .testimonial-context {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(245, 237, 224, 0.5);
+    font-style: italic;
+  }
+
+  .testimonial-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(245, 237, 224, 0.75);
+    line-height: 1.7;
+  }
+
+  .testimonial-highlight {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--cream-dark);
+    line-height: 1.5;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(245, 237, 224, 0.1);
+  }
+
+  /* ═══════════════ FOOTER ═══════════════ */
+  .footer {
+    background: rgba(45, 31, 61, 0.96);
+    border-top: 1px solid rgba(245, 237, 224, 0.08);
+    padding: 1.5rem 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(245, 237, 224, 0.45);
+  }
+
+  .footer-link {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: var(--cream-dark); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-contact,
+    .hero-review {
+      margin-top: 0;
+      order: 2;
+    }
+
+    .hero-center {
+      order: 1;
+    }
+
+    .hero-image {
+      height: 380px;
+    }
+
+    .how-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .how-pillars {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer para fade-in
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+</script>

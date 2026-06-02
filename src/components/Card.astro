@@ -2,7 +2,8 @@
 import { Image } from "astro:assets";
 
 interface CardProps {
-  photo: ImageMetadata;
+  photo?: ImageMetadata;
+  icon?: string;
   duration?: string;
   hasPdf?: boolean;
   description?: string;
@@ -10,83 +11,229 @@ interface CardProps {
   price: number;
   title: string;
   discount?: number;
+  variant?: "session" | "tarot" | "tool";
 }
 
 const {
   title,
   photo,
+  icon = "",
   duration = "1 mes",
   hasPdf = false,
   description = "",
   benefits = [],
   price,
   discount = 0,
+  variant = "session",
 }: CardProps = Astro.props as CardProps;
 
 const finalPrice =
-  discount > 0 ? (price * (1 - discount / 100)).toFixed(2) : price;
+  discount > 0 ? (price * (1 - discount / 100)).toFixed(2) : price.toFixed(2);
 ---
 
-<div
-  class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform flex flex-col"
->
-  <Image
-    class="w-full h-auto object-cover object-center"
-    alt="Rosa"
-    src={photo}
-  />
+<div class={`card card--${variant}`}>
+  {photo && (
+    <div class="card-image-wrap">
+      <Image
+        class="card-image"
+        alt={title}
+        src={photo}
+      />
+      {discount > 0 && (
+        <span class="card-badge">-{discount}%</span>
+      )}
+    </div>
+  )}
 
-  <div class="p-3 flex flex-col gap-2 flex-grow">
-    <div class="flex items-center justify-between">
-      <h3 class="text-md font-semibold text-gray-800">
-        {title}
-      </h3>
+  <div class="card-body">
+    {icon && !photo && <div class="card-icon">{icon}</div>}
 
-      <div class="flex gap-2 text-xs">
-        <span
-          class="bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium"
-        >
-          {duration}
-        </span>
-
-        {
-          hasPdf && (
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full font-medium">
-              Incluye PDF
-            </span>
-          )
-        }
+    <div class="card-header">
+      <h3 class="card-title">{title}</h3>
+      <div class="card-meta">
+        <span class="card-tag">{duration}</span>
+        {hasPdf && <span class="card-tag card-tag--pdf">Incluye PDF</span>}
       </div>
     </div>
 
-    {description && <p class="text-sm text-gray-700">{description}</p>}
+    {description && <p class="card-description">{description}</p>}
 
-    <h4 class="text-lg font-semibold text-pink-600 mt-1">Beneficios</h4>
+    {benefits.length > 0 && (
+      <ul class="card-benefits">
+        {benefits.map((b) => (
+          <li class="card-benefit">
+            <span class="benefit-dot"></span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    )}
 
-    <ul class="list-disc list-inside text-gray-700 text-sm">
-      {benefits.map((b) => <li>{b}</li>)}
-    </ul>
-
-    <div class="mt-auto pt-2">
-      <div class="mt-auto pt-2 border-t border-gray-200">
-        {
-          discount > 0 && (
-            <p class="text-sm text-gray-400 line-through">{price} €</p>
-          )
-        }
-
-        <p class="text-xl font-bold text-green-600">
-          {finalPrice} €
-        </p>
-
-        {
-          discount > 0 && (
-            <span class="text-xs text-red-500 font-semibold">
-              -{discount}% OFF
-            </span>
-          )
-        }
-      </div>
+    <div class="card-footer">
+      {discount > 0 && (
+        <span class="card-price-original">{price.toFixed(2)} €</span>
+      )}
+      <span class="card-price">{finalPrice} €</span>
     </div>
   </div>
 </div>
+
+<style>
+  .card {
+    background: #fffcf8;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 107, 89, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(45, 31, 61, 0.1);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.04);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #2d1f3d;
+    color: #f5ede0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d1f3d;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .card-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #8b6b59;
+    background: rgba(139, 107, 89, 0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .card-tag--pdf {
+    color: #4a3a55;
+    background: rgba(74, 58, 85, 0.1);
+  }
+
+  .card-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: #6b5a6e;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .card-benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .card-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: #4a3a55;
+    line-height: 1.5;
+  }
+
+  .benefit-dot {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #b89b8a;
+    margin-top: 0.45em;
+  }
+
+  .card-footer {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(139, 107, 89, 0.12);
+    display: flex;
+    align-items: baseline;
+    gap: 0.625rem;
+  }
+
+  .card-price-original {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: #b89b8a;
+    text-decoration: line-through;
+  }
+
+  .card-price {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d1f3d;
+    letter-spacing: -0.01em;
+  }
+</style>
