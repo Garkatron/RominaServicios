@@ -5,20 +5,17 @@ import Monedas from "../assets/images/Monedas.jpg";
 import VelaRosa from "../assets/images/VelaRosa.jpg";
 import BlancoNegro from "../assets/images/VelasBlancoNegro.jpg";
 import RominaFoto from "../assets/images/romina2.jpg";
-import Tijeras from "../assets/images/tijeras.jpg";
-import Tarot from "../assets/images/tarot.webp";
+import TarotIntuitivo from "../assets/images/tarot_intuitivo.png";
+import Velomancia from "../assets/images/velomancia.png";
+import GuiaIntuitiva from "../assets/images/guia_intuitiva.png";
 import { Image } from "astro:assets";
-import Card from "../components/Card.astro";
 import Navbar from "../components/Navbar.astro";
 import data from "../data.json";
 
-// Mapeo de imágenes por id de sesión
-const sessionImages: Record<string, ImageMetadata> = {
-  "amor-pareja": Rosa2,
-  "corte-lazos": Tijeras,
-  "prosperidad": Monedas,
-  "alejamiento": BlancoNegro,
-  "amor-propio": VelaRosa,
+const toolImages: Record<string, ImageMetadata> = {
+  "Tarot intuitivo": TarotIntuitivo,
+  "Velomancia": Velomancia,
+  "Guía intuitiva": GuiaIntuitiva,
 };
 ---
 
@@ -143,9 +140,20 @@ const sessionImages: Record<string, ImageMetadata> = {
         <div class="tools-grid">
           {data.tools.items.map((tool, i) => (
             <div class="tool-card fade-in" style={`--delay: ${0.1 * i}s`}>
-              <div class="tool-icon">{tool.icon}</div>
-              <h3 class="tool-title">{tool.title}</h3>
-              <p class="tool-description">{tool.description}</p>
+              {toolImages[tool.title] && (
+                <div class="tool-image-wrap">
+                  <Image
+                    src={toolImages[tool.title]}
+                    alt={tool.title}
+                    class="tool-image"
+                  />
+                </div>
+              )}
+              <div class="tool-body">
+                <div class="tool-icon">{tool.icon}</div>
+                <h3 class="tool-title">{tool.title}</h3>
+                <p class="tool-description">{tool.description}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -175,62 +183,6 @@ const sessionImages: Record<string, ImageMetadata> = {
         <div class="how-quote fade-in">
           <span class="how-quote-mark">"</span>
           <p>{data.site.aboutQuote}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         SESIONES
-    ═══════════════════════════════════════════ -->
-    <section id="sesiones" class="section section--sessions">
-      <div class="section-inner">
-        <div class="section-header fade-in">
-          <span class="section-eyebrow">Acompañamiento</span>
-          <h2 class="section-title">{data.sessions.heading}</h2>
-          <p class="section-intro">{data.sessions.intro}</p>
-        </div>
-
-        <div class="cards-grid">
-          {data.sessions.items.map((item) => (
-            <Card
-              photo={sessionImages[item.id]}
-              title={`${item.icon} ${item.title}`}
-              duration={item.duration}
-              hasPdf={item.hasPdf}
-              description={item.description}
-              benefits={item.benefits}
-              price={item.price}
-              discount={data.sessions.activeDiscount}
-              variant="session"
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         TAROT
-    ═══════════════════════════════════════════ -->
-    <section id="tarot" class="section section--tarot">
-      <div class="section-inner">
-        <div class="section-header fade-in">
-          <span class="section-eyebrow">Lecturas</span>
-          <h2 class="section-title">{data.tarot.heading}</h2>
-        </div>
-
-        <div class="cards-grid cards-grid--3">
-          {data.tarot.items.map((item) => (
-            <Card
-              photo={Tarot}
-              title={`${item.icon} ${item.title}`}
-              duration={item.duration}
-              hasPdf={item.hasPdf}
-              description={item.description}
-              benefits={item.benefits}
-              price={item.price}
-              variant="tarot"
-            />
-          ))}
         </div>
       </div>
     </section>
@@ -403,17 +355,6 @@ const sessionImages: Record<string, ImageMetadata> = {
   }
 
   .link-more:hover { color: var(--plum); }
-
-  /* ─── Cards grid ─── */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .cards-grid--3 {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
 
   /* ═══════════════ HERO ═══════════════ */
   .hero {
@@ -624,13 +565,35 @@ const sessionImages: Record<string, ImageMetadata> = {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 2rem 1.75rem;
+    overflow: hidden;
     transition: transform 0.25s, box-shadow 0.25s;
   }
 
   .tool-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 32px rgba(45, 31, 61, 0.08);
+  }
+
+  .tool-image-wrap {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .tool-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+
+  .tool-card:hover .tool-image {
+    transform: scale(1.04);
+  }
+
+  .tool-body {
+    padding: 2rem 1.75rem;
   }
 
   .tool-icon {
@@ -725,16 +688,6 @@ const sessionImages: Record<string, ImageMetadata> = {
     font-style: italic;
     color: var(--plum-mid);
     line-height: 1.6;
-  }
-
-  /* ═══════════════ SESSIONS ═══════════════ */
-  .section--sessions {
-    background: #fff;
-  }
-
-  /* ═══════════════ TAROT ═══════════════ */
-  .section--tarot {
-    background: var(--cream);
   }
 
   /* ═══════════════ TESTIMONIALS ═══════════════ */
